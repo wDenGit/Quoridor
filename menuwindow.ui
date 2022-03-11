@@ -13,18 +13,151 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton_play">
+  <widget class="QStackedWidget" name="menuWidget">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>30</y>
-     <width>101</width>
-     <height>31</height>
+     <x>0</x>
+     <y>0</y>
+     <width>629</width>
+     <height>409</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Play Game</string>
-   </property>
+   <widget class="QWidget" name="main">
+    <widget class="QPushButton" name="pushButton_play">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>47</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Commencer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_play_charge">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>100</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Charger une partie</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_friends">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>150</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Liste d'amis</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_ranking">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>200</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Classement</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_diconnect">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>250</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Deconnexion</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="play">
+    <widget class="QPushButton" name="pushButton_oneVone">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>55</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1 VS 1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_twoVtwo">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>110</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2 VS 2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_retour">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>160</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Retour</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="friends">
+    <widget class="QPushButton" name="pushButton_add">
+     <property name="geometry">
+      <rect>
+       <x>211</x>
+       <y>40</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ajouter un ami</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_friend_retour">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>250</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Retour</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>
