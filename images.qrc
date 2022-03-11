@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/my_images">
+        <file>my_images/back_arrow.png</file>
+    </qresource>
+</RCC>
