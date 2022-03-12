@@ -30,6 +30,8 @@ private slots:
     void friend_management();
     void friend_man_add();
     void friend_man_pseudo();
+    void ranking();
+    void deco();
 };
 
 #endif // MENUWINDOW_H

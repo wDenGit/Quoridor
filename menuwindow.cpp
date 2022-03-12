@@ -2,6 +2,7 @@
 #include "connexionwindow.h"
 #include "ui_menuwindow.h"
 
+#include <QFileInfo>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -19,9 +20,13 @@ menuWindow::menuWindow(QWidget *parent) :
     connect(ui->pushButton_play, SIGNAL(released()), this, SLOT(play_game()));
     connect(ui->pushButton_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_friends, SIGNAL(released()), this, SLOT(friend_management()));
+    connect(ui->pushButton_diconnect, SIGNAL(released()), this, SLOT(deco()));
     connect(ui->pushButton_friend_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_add, SIGNAL(released()), this, SLOT(friend_man_add()));
     connect(ui->pushButton_friend_add, SIGNAL(released()), this, SLOT(friend_man_pseudo()));
+    connect(ui->pushButton_friend_add_retour, SIGNAL(released()), this, SLOT(retour()));
+    connect(ui->pushButton_ranking, SIGNAL(released()), this, SLOT(ranking()));
+    connect(ui->pushButton_rank_retour, SIGNAL(released()), this, SLOT(retour()));
 
 }
 
@@ -32,9 +37,9 @@ menuWindow::~menuWindow()
 
 bool menuWindow::check_pseudo(string pseudo){
     QString pseudo_read;
-    ifstream read_file;
-    read_file.open("test_2.txt");
-    if (read_file.is_open()){
+    // ifstream read_file ("spo.txt"); // TODO KILL ME PLIZ
+    QFile read_file{"spo.txt"};
+    if (read_file.open(QIODevice::ReadOnly)){
         cout << "okaed" << endl;
     }
     else{
@@ -85,10 +90,14 @@ void menuWindow::friend_man_pseudo(){
     QString testString = ui->friend_to_add->text();
     qDebug(qUtf8Printable(testString));
     check_pseudo(testString.toUtf8().constData());
-
 }
 
+void menuWindow::ranking(){
+    show_screen(RANKING);
+}
 
-
+void menuWindow::deco(){
+    exit(0);
+}
 
 
