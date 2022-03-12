@@ -17,23 +17,6 @@
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0, stop:0 rgba(230, 230, 230, 246), stop:1 rgba(255, 255, 255, 255));</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="plainTextEdit_Titre">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>30</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 500 11pt &quot;FiraCode NF&quot;;
-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="plainText">
-     <string>Quoridor - G1</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_Quitter">
     <property name="geometry">
      <rect>
@@ -62,7 +45,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page">
      <widget class="QPushButton" name="pushButton_Connexion">
@@ -227,8 +210,10 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:0, stop:0 rgb
        </rect>
       </property>
      </widget>
-     <zorder>layoutWidget</zorder>
-     <zorder>layoutWidget</zorder>
+     <zorder>label_Login_2</zorder>
+     <zorder>lineEdit_Login_2</zorder>
+     <zorder>label_Mdp_2</zorder>
+     <zorder>lineEdit_Mdp_2</zorder>
      <zorder>label_ErrorMdp_2</zorder>
      <zorder>label_ErrorLogin_2</zorder>
      <zorder>pushButton_Retour_2</zorder>
@@ -387,13 +372,101 @@ color: black;</string>
        <string/>
       </property>
      </widget>
+     <zorder>label_Mdp_3</zorder>
+     <zorder>lineEdit_Mdp_3</zorder>
+     <zorder>label_Login_3</zorder>
+     <zorder>lineEdit_Login_3</zorder>
+     <zorder>label_ConfirmationMdp_3</zorder>
+     <zorder>lineEdit_ConfirmationMdp_3</zorder>
+     <zorder>label_ErrorConfirmationMdp_3</zorder>
      <zorder>label_ErrorLogin_3</zorder>
-     <zorder>layoutWidget</zorder>
-     <zorder>layoutWidget</zorder>
      <zorder>pushButton_Retour_3</zorder>
-     <zorder>layoutWidget</zorder>
      <zorder>pushButton_Envoyer_3</zorder>
     </widget>
+    <widget class="QWidget" name="page_4">
+     <widget class="QLabel" name="label_IP_4">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>50</y>
+        <width>38</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>IP:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Envoyer_4">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>130</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 2px inset rgb(211, 215, 207);
+border-radius: 8px;
+color: black;</string>
+      </property>
+      <property name="text">
+       <string>Envoyer</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_IP_4">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>73</y>
+        <width>142</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>127.0.0.1</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_ErrorIP_4">
+      <property name="geometry">
+       <rect>
+        <x>69</x>
+        <y>99</y>
+        <width>171</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(239, 41, 41);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_Titre">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>30</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 500 11pt &quot;FiraCode NF&quot;;
+color: navy;
+border: 2px outset  blue;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));</string>
+    </property>
+    <property name="text">
+     <string>Quoridor - G1</string>
+    </property>
    </widget>
   </widget>
  </widget>
