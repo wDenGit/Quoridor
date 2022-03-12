@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -54,3 +56,5 @@ void MainWindow::envoyer_pressed_3(){
     //QString pseudo = ui->lineEdit_Login_3;
     QString mdp;
 }
+
+

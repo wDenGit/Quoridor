@@ -18,7 +18,7 @@ HEADERS += \
     constante.h \
     generalwindow.h \
     mainwindow.h \
-    menuwindow.h \
+    menuwindow.hpp \
     observer.hpp
 
 FORMS += \
@@ -32,3 +32,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     images.qrc
+
+DISTFILES += \
+    test.txt

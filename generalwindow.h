@@ -2,7 +2,7 @@
 #define GENERALWINDOW_H
 
 #include "mainwindow.h"
-#include "menuwindow.h"
+#include "menuwindow.hpp"
 
 #include <QObject>
 #include <QWidget>
