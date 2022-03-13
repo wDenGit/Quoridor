@@ -27,6 +27,7 @@ menuWindow::menuWindow(QWidget *parent) :
     connect(ui->pushButton_friend_add_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_ranking, SIGNAL(released()), this, SLOT(ranking()));
     connect(ui->pushButton_rank_retour, SIGNAL(released()), this, SLOT(retour()));
+    connect(ui->pushButton_rank_add, SIGNAL(released()), this, SLOT(update_ranking_slot()));
 
 }
 
@@ -63,6 +64,24 @@ void menuWindow::show_screen(int to_load){
     ui->menuWidget->setCurrentIndex(actual_page);
 }
 
+void menuWindow::update_ranking(RankingData data){
+    cout <<"into ranking" << endl;
+    char* tmp_char;
+    char* num_char;
+    sprintf(num_char, "%d", data.score);
+    tmp_char = &data.player[0];
+    ui->tableRank->setItem(1, 0, new QTableWidgetItem(QString(tmp_char)));
+    ui->tableRank->setItem(1, 1, new QTableWidgetItem(QString(num_char)));
+//    tm *tmp; // TODO SYSTEM DE DATE NE FONCTIONNE PAS!!!!!!!!!!!!!!!!!!!!!
+//    time(&data.date);
+//    tmp = localtime(&data.date);
+//    char date[100];
+    // strftime(date, 100, "%j/%m/%y", tmp);
+    //ui->tableRank->setItem(1, 2, new QTableWidgetItem(QString(date)));
+}
+
+// Slots----------------------------------------------------------------------------------
+
 void menuWindow::play_game(){
     qDebug("Play Game");
     show_screen(PLAY);
@@ -94,6 +113,11 @@ void menuWindow::friend_man_pseudo(){
 
 void menuWindow::ranking(){
     show_screen(RANKING);
+}
+
+void menuWindow::update_ranking_slot(){
+    // update_ranking({"test", 0, time_t});
+    update_ranking({string("james"), 0});
 }
 
 void menuWindow::deco(){

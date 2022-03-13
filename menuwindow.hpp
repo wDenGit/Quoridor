@@ -3,7 +3,15 @@
 
 #include <QDialog>
 #include <string.h>
+#include <ctime>
 #include "constante.h"
+
+struct RankingData{
+    std::string player;
+    int score;
+    std::time_t date;
+};
+
 namespace Ui {
 class menuWindow;
 }
@@ -18,6 +26,7 @@ public:
     void show_screen(int to_load);
     void change_screen(int screen);
     bool check_pseudo(std::string pseudo);
+    void update_ranking(RankingData data);
 
 
 private:
@@ -32,6 +41,7 @@ private slots:
     void friend_man_pseudo();
     void ranking();
     void deco();
+    void update_ranking_slot();
 };
 
 #endif // MENUWINDOW_H

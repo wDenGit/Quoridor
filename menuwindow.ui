@@ -216,13 +216,13 @@
     </widget>
    </widget>
    <widget class="QWidget" name="ranking">
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="tableRank">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
        <width>631</width>
-       <height>321</height>
+       <height>331</height>
       </rect>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
@@ -230,7 +230,52 @@
      </attribute>
      <row>
       <property name="text">
-       <string>/</string>
+       <string>1</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>6</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>7</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>9</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>10</string>
       </property>
      </row>
      <column>
@@ -250,17 +295,17 @@
      </column>
      <item row="0" column="0">
       <property name="text">
-       <string>james</string>
+       <string/>
       </property>
      </item>
      <item row="0" column="1">
       <property name="text">
-       <string>900000</string>
+       <string/>
       </property>
      </item>
      <item row="0" column="2">
       <property name="text">
-       <string>99/99/9999</string>
+       <string/>
       </property>
      </item>
     </widget>
@@ -275,6 +320,19 @@
      </property>
      <property name="text">
       <string>Retour</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_rank_add">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>340</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add</string>
      </property>
     </widget>
    </widget>
