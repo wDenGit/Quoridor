@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QString>
 #include <client/client.hpp>
+#include <client/menu_connection.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

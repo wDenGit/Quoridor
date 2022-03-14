@@ -42,8 +42,9 @@ int Client::run(int port, string ip){
     if(connexion_error<0){
         return connexion_error;
     }
-
-    //MenuConnection menuConnection{this->client_socket};
-    //menuConnection.run();
     return 0;
+};
+
+int Client::getClient_socket(){
+    return this->client_socket;
 };
