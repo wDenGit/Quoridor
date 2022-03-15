@@ -8,6 +8,6 @@ const int PLAY = 1;
 const int FRIENDS = 2;
 const int FRIENDS_ADD = 3;
 const int RANKING = 4;
-
+const int MATCHMAKING = 5;
 
 #endif // CONSTANTE_H
