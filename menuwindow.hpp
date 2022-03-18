@@ -4,7 +4,12 @@
 #include <QDialog>
 #include <string.h>
 #include <ctime>
+#include <client/client.hpp>
+#include <client/menu_connection.hpp>
 #include "constante.h"
+#include "mainwindow.h"
+#include "observer.hpp"
+#include "abstractwindow.h"
 
 struct RankingData{
     std::string player;
@@ -16,9 +21,10 @@ namespace Ui {
 class menuWindow;
 }
 
-class menuWindow : public QDialog
+class menuWindow : public QDialog, public AbstractWindow
 {
     Q_OBJECT
+    Client c;
 
 public:
     explicit menuWindow(QWidget *parent = nullptr);
