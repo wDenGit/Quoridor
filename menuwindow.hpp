@@ -29,12 +29,14 @@ public:
     void update_ranking(RankingData data);
 
 
+
 private:
     Ui::menuWindow *ui;
     int actual_page = MAIN_MENU;
 
 private slots:
     void play_game();
+    void matchmaking();
     void retour();
     void friend_management();
     void friend_man_add();

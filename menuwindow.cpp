@@ -28,6 +28,8 @@ menuWindow::menuWindow(QWidget *parent) :
     connect(ui->pushButton_ranking, SIGNAL(released()), this, SLOT(ranking()));
     connect(ui->pushButton_rank_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_rank_add, SIGNAL(released()), this, SLOT(update_ranking_slot()));
+    connect(ui->pushButton_oneVone, SIGNAL(released()), this, SLOT(matchmaking()));
+    connect(ui->pushButton_twoVtwo, SIGNAL(released()), this, SLOT(matchmaking()));
 
 }
 
@@ -85,6 +87,11 @@ void menuWindow::update_ranking(RankingData data){
 void menuWindow::play_game(){
     qDebug("Play Game");
     show_screen(PLAY);
+}
+
+void menuWindow::matchmaking(){
+    qDebug("Matchmaking");
+    show_screen(MATCHMAKING);
 }
 
 void menuWindow::retour(){
