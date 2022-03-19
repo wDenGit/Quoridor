@@ -3,20 +3,17 @@
 #include "ui_menuwindow.h"
 
 #include <QFileInfo>
-#include <QTextStream>
-#include <QVector>
-
 #include <iostream>
 #include <string>
-#include <vector>
 #include <fstream>
 #include <unistd.h>
 
 using namespace std;
 
 menuWindow::menuWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::menuWindow)
+    QDialog(parent)
+    , AbstractWindow(this)
+    , ui(new Ui::menuWindow)
 {
     ui->setupUi(this);
 
@@ -32,7 +29,8 @@ menuWindow::menuWindow(QWidget *parent) :
     connect(ui->pushButton_ranking, SIGNAL(released()), this, SLOT(ranking()));
     connect(ui->pushButton_rank_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_rank_add, SIGNAL(released()), this, SLOT(update_ranking_slot()));
-    connect(ui->pushButton_fr_liste, SIGNAL(released()), this, SLOT(friend_list()));
+    connect(ui->pushButton_oneVone, SIGNAL(released()), this, SLOT(matchmaking()));
+    connect(ui->pushButton_twoVtwo, SIGNAL(released()), this, SLOT(matchmaking()));
 
 }
 
@@ -44,34 +42,23 @@ menuWindow::~menuWindow()
 bool menuWindow::check_pseudo(string pseudo){
     QString pseudo_read;
     // ifstream read_file ("spo.txt"); // TODO KILL ME PLIZ
-    QFile file{QString("/home/bappi/Documents/F209/WORK/PART_3/WORK_3/Quoridor/test.txt")};
-    // file.open(QIODevice::ReadOnly);
-    if(!file.open(QIODevice::ReadOnly))
-        {
-            qDebug("Don't exist");
-            return false;
-        }
-    qDebug("Opened");
-    QTextStream in(&file);
-    while(! in.atEnd()){
-        QString tmp = in.readLine();
-        cout << "entered" << endl;
-        cout << tmp.toUtf8().constData() << endl;
-        if (pseudo == tmp.toUtf8().constData()){
-            cout << "True" << endl;
-            file.close();
-            return true;
-
-        }
+    QFile read_file{"spo.txt"};
+    if (read_file.open(QIODevice::ReadOnly)){
+        cout << "okaed" << endl;
     }
-//   for (QString line = in.readLine();
-//         !line.isNull();
-//         line = in.readLine()) {
-//       cout << "entered" << endl;
-//        /* process information */
-//    };
-    file.close();
-    qDebug("finished");
+    else{
+        cout << "Niet okayed" << endl;
+    }
+    string tmp;
+    // cout << "test" << endl;
+//    while(getline(read_file, tmp)){
+//        cout << "test" << endl;
+//        if (pseudo == tmp){
+//            return true;
+//            qDebug("okay");
+//        }
+//    }
+    qDebug("Not Okay");
     return false;
 }
 
@@ -80,7 +67,7 @@ void menuWindow::show_screen(int to_load){
     ui->menuWidget->setCurrentIndex(actual_page);
 }
 
-void menuWindow::update_ranking(RankingData data){ // TODO NE PAS PRENDRE EN COMPTE CAR NOUS ALLONS RECEVOIR DES MESSAGES DU SERVEUR
+void menuWindow::update_ranking(RankingData data){
     cout <<"into ranking" << endl;
     char* tmp_char;
     char* num_char;
@@ -96,30 +83,16 @@ void menuWindow::update_ranking(RankingData data){ // TODO NE PAS PRENDRE EN COM
     //ui->tableRank->setItem(1, 2, new QTableWidgetItem(QString(date)));
 }
 
-//void menuWindow::update_ranking(RankingData data){
-//    // ifstream read_file ("spo.txt"); // TODO KILL ME PLIZ
-//    QFile file{QString("/home/bappi/Documents/F209/WORK/PART_3/WORK_3/Quoridor/test_csv.csv")}; // TODO!!!!!!!!!!!!!!!!
-//    // file.open(QIODevice::ReadOnly);
-//    if(!file.open(QIODevice::ReadOnly))
-//        {
-//            qDebug("Don't exist");
-//            return false;
-//        }
-//    qDebug("Opened");
-//    QVector<QString> string_vector;
-//    QTextStream in(&file);
-//    while(! in.atEnd()){
-//        QString tmp = in.readLine();
-//        string_vector.append(tmp);
-//    }
-
-//}
-
 // Slots----------------------------------------------------------------------------------
 
 void menuWindow::play_game(){
     qDebug("Play Game");
     show_screen(PLAY);
+}
+
+void menuWindow::matchmaking(){
+    qDebug("Matchmaking");
+    show_screen(MATCHMAKING);
 }
 
 void menuWindow::retour(){
@@ -157,10 +130,6 @@ void menuWindow::update_ranking_slot(){
 
 void menuWindow::deco(){
     exit(0);
-}
-
-void menuWindow::friend_list(){
-    show_screen(FRIENDS_LIST);
 }
 
 
