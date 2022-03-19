@@ -4,12 +4,7 @@
 #include <QDialog>
 #include <string.h>
 #include <ctime>
-#include <client/client.hpp>
-#include <client/menu_connection.hpp>
 #include "constante.h"
-#include "mainwindow.h"
-#include "observer.hpp"
-#include "abstractwindow.h"
 
 struct RankingData{
     std::string player;
@@ -21,10 +16,9 @@ namespace Ui {
 class menuWindow;
 }
 
-class menuWindow : public QDialog, public AbstractWindow
+class menuWindow : public QDialog
 {
     Q_OBJECT
-    Client c;
 
 public:
     explicit menuWindow(QWidget *parent = nullptr);
@@ -33,10 +27,6 @@ public:
     void change_screen(int screen);
     bool check_pseudo(std::string pseudo);
     void update_ranking(RankingData data);
-    menuWindow* getSelf() override{
-        return this;
-    }
-
 
 
 private:
@@ -45,7 +35,6 @@ private:
 
 private slots:
     void play_game();
-    void matchmaking();
     void retour();
     void friend_management();
     void friend_man_add();
@@ -53,6 +42,7 @@ private slots:
     void ranking();
     void deco();
     void update_ranking_slot();
+    void friend_list();
 };
 
 #endif // MENUWINDOW_H

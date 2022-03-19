@@ -4,34 +4,25 @@
 #include <vector>
 #include <string>
 #include <bits/stdc++.h>
-#include <memory>
-#include <QVector>
-#include <QSharedPointer>
 
 using namespace std;
 
 struct Observer{
-    Observer() = default;
-    virtual ~Observer() {};
-    virtual void update(int windowToShow) = 0;
+    virtual void update()=0;
 };
 
 class Subject{
-    QVector<QSharedPointer<Observer>>  observers;
+    vector <Observer *> observers;
 public:
-    void registerObserver(QSharedPointer<Observer> obs){
-        observers.push_back(obs);
+    void registerObserver(Observer *observer){
+        observers.push_back(observer);
     }
-    void removeObserver(QSharedPointer<Observer> obs){
-        remove(begin(observers),end(observers),obs);
+    void removeObserver(Observer *observer){
+        remove(begin(observers),end(observers),observer);
     }
-
-    /*
-    This method update all of the registered observers...
-    */
-    void notifyObservers(int windowToShow) const {
+    void notifyObservers() const {
         for (auto &observer:observers)
-            observer->update(windowToShow);
+            observer->update();
     }
 };
 #endif // OBSERVER_H
