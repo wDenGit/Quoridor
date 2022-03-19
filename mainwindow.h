@@ -2,40 +2,27 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QString>
-#include <client/client.hpp>
-#include <client/menu_connection.hpp>
-#include "abstractwindow.h"
-#include "observer.hpp"
+#include <QSharedPointer>
+#include <QDebug>
+#include <QGridLayout>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow, public AbstractWindow
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    Client c;
+    QVector<QVector<QSharedPointer<QPushButton>>> buttons;
+    //QGridLayout *gridLayout;
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    int setup_client(QString ip);
-    MainWindow* getSelf() override{
-        return this;
-    }
 
 private:
     Ui::MainWindow *ui;
-
-private slots:
-    void connexion_pressed();
-    void inscription_pressed();
-    void quitter_pressed();
-    void retour_pressed();
-    void envoyer_pressed_2();
-    void envoyer_pressed_3();
-    void envoyer_pressed_4();
+    void make_button();
 };
-
 #endif // MAINWINDOW_H
