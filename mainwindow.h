@@ -19,8 +19,11 @@ class MainWindow : public QMainWindow, public AbstractWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    int setup_client(QString ip);
     ~MainWindow();
+    int setup_client(QString ip);
+    MainWindow* getSelf() override{
+        return this;
+    }
 
 private:
     Ui::MainWindow *ui;

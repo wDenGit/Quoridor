@@ -17,13 +17,11 @@
 class generalWindow: public Observer, public QEnableSharedFromThis<generalWindow>
 {
 private:
-    QSharedPointer<MainWindow> w = QSharedPointer<MainWindow>(new MainWindow);
-    QSharedPointer<menuWindow> m = QSharedPointer<menuWindow>(new menuWindow);
     int actual_window = 0;
-    QVector <QSharedPointer<AbstractWindow>> windows;
+    QVector<QSharedPointer<AbstractWindow>> windows;
 
 public:
-    generalWindow();
+    generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m);
     ~generalWindow();
     void run_game();
     void switch_window(int windowToShow);

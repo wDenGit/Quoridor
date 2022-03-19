@@ -1,4 +1,5 @@
 #include "generalwindow.h"
+#include <QDebug>
 
 using namespace std;
 
@@ -9,25 +10,26 @@ void generalWindow::create_windows(){
     }
 }
 
-generalWindow::generalWindow(){
-    windows.push_back(m);
+generalWindow::generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m){
     windows.push_back(w);
+    windows.push_back(m);
 }
 
 void generalWindow::run_game(){
-    w->QMainWindow::show();
-    // windows[WINDOW_CONNECT]->show();
+    windows[WINDOW_CONNECT]->getSelf()->show();
 }
 
-generalWindow::~generalWindow(){
-
-}
+generalWindow::~generalWindow(){}
 
 void generalWindow::switch_window(int windowToShow){
-     //windows[windowToShow]->show();
-     //for(int i=0; i< (int) windows.size(); i++){
-     //    windows[i]->hide();
-    //}
+    windows[windowToShow]->getSelf()->show();
+    //qDebug() << windowToShow << " : "<< windows[windowToShow]->getSelf()->metaObject()->className();
+    for(int i=0; i< (int) windows.size(); i++){
+        //qDebug() << "for " << i <<" : "<<windows[i]->getSelf()->metaObject()->className();
+        if(i != windowToShow){
+            windows[i]->getSelf()->hide();
+        }
+    }
 }
 
  /*

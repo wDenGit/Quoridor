@@ -11,8 +11,9 @@
 using namespace std;
 
 menuWindow::menuWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::menuWindow)
+    QDialog(parent)
+    , AbstractWindow(this)
+    , ui(new Ui::menuWindow)
 {
     ui->setupUi(this);
 

@@ -5,6 +5,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
+    , AbstractWindow(this)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -51,6 +52,7 @@ void MainWindow::envoyer_pressed_2(){
     int userId = MenuConnection::connection(this->c.getClient_socket(), pseudo.toStdString(), mdp.toStdString());
     ui->label_ErrorLogin_2->setText("");
     if(userId > 0) {
+        qDebug("Ca va faire mal");
         this->notifyObservers(WINDOW_CONNECT+1);
     }
     else{

@@ -33,6 +33,9 @@ public:
     void change_screen(int screen);
     bool check_pseudo(std::string pseudo);
     void update_ranking(RankingData data);
+    menuWindow* getSelf() override{
+        return this;
+    }
 
 
 
