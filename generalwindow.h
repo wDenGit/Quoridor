@@ -6,18 +6,22 @@
 #include "observer.hpp"
 #include "abstractwindow.h"
 #include "constante.h"
+#include <client/client.hpp>
+#include <client/menu_connection.hpp>
 #include <QObject>
 #include <QWidget>
 #include <QWindow>
 #include <QVector>
 #include <QSharedPointer>
 #include <QEnableSharedFromThis>
+#include <memory>
 
 class generalWindow: public Observer, public QEnableSharedFromThis<generalWindow>
 {
 private:
     int actual_window = 0;
     QVector<QSharedPointer<AbstractWindow>> windows;
+
 
 public:
     generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m);

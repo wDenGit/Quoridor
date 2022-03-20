@@ -1,6 +1,7 @@
 QT       += core gui
+QT += multimedia
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 CONFIG += c++11
 
@@ -69,4 +70,6 @@ RESOURCES += \
     images.qrc
 
 DISTFILES += \
+    audio/National Anthem of USSR.wav \
+    audio/USSR.wav \
     test.txt

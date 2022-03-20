@@ -1,16 +1,18 @@
 #include "mainwindow.h"
 #include "constante.h"
 #include "ui_mainwindow.h"
+#include <iostream>
+using namespace std;
 
-
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(shared_ptr<Client> c, QWidget *parent)
     : QMainWindow(parent)
+    , c{c}
     , AbstractWindow(this)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(3);
-
+    cout << "New Version"<< endl;
     connect(ui->pushButton_Connexion, SIGNAL(released()), this, SLOT(connexion_pressed()));
     connect(ui->pushButton_Inscription, SIGNAL(released()), this, SLOT(inscription_pressed()));
     connect(ui->pushButton_Quitter, SIGNAL(released()), this, SLOT(quitter_pressed()));
@@ -28,8 +30,10 @@ MainWindow::~MainWindow()
 }
 
 int MainWindow::setup_client(QString ip){
-    return c.run(8080, ip.toStdString());
+    return c->run(8080, ip.toStdString());
 }
+
+
 
 void MainWindow::connexion_pressed(){
     ui->stackedWidget->setCurrentIndex(1);
@@ -49,7 +53,7 @@ void MainWindow::retour_pressed(){
 void MainWindow::envoyer_pressed_2(){
     QString pseudo = ui->lineEdit_Login_2->text();
     QString mdp = ui->lineEdit_Mdp_2->text();
-    int userId = MenuConnection::connection(this->c.getClient_socket(), pseudo.toStdString(), mdp.toStdString());
+    int userId = MenuConnection::connection(this->c->getClient_socket(), pseudo.toStdString(), mdp.toStdString());
     ui->label_ErrorLogin_2->setText("");
     if(userId > 0) {
         qDebug("Ca va faire mal");
@@ -74,7 +78,7 @@ void MainWindow::envoyer_pressed_3(){
     }else{
         //TODO empecher pseudo vide et mdp vide coté serv
         //TODO Directement connecter joueur
-        if(MenuConnection::createAccount(this->c.getClient_socket(), pseudo.toStdString(), mdp.toStdString()) == 0) {
+        if(MenuConnection::createAccount(this->c->getClient_socket(), pseudo.toStdString(), mdp.toStdString()) == 0) {
             qDebug("Creation reussite");
         }
         else{

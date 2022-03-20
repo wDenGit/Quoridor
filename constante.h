@@ -8,7 +8,8 @@ const int PLAY = 1;
 const int FRIENDS = 2;
 const int FRIENDS_ADD = 3;
 const int RANKING = 4;
-const int MATCHMAKING = 5;
+const int FRIEND_LIST = 5;
+const int MATCHMAKING = 6;
 
 // Constante des window
 

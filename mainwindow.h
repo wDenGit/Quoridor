@@ -5,6 +5,8 @@
 #include <QString>
 #include <client/client.hpp>
 #include <client/menu_connection.hpp>
+#include <memory>
+#include <string>
 #include "abstractwindow.h"
 #include "observer.hpp"
 
@@ -15,18 +17,20 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow, public AbstractWindow
 {
     Q_OBJECT
-    Client c;
+    std::shared_ptr<Client> c; // PROBS METTRE LE CLIENT A L'EXTERIEUR POUR QUE TOUT LE MONDE AIT ACCES
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(std::shared_ptr<Client> c, QWidget *parent = nullptr);
     ~MainWindow();
     int setup_client(QString ip);
+    // int get_ip();
     MainWindow* getSelf() override{
         return this;
     }
 
 private:
     Ui::MainWindow *ui;
+    // int ip;
 
 private slots:
     void connexion_pressed();

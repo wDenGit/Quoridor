@@ -3,6 +3,7 @@
 #include "ui_menuwindow.h"
 
 #include <QFileInfo>
+#include <QMessageBox>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -10,13 +11,15 @@
 
 using namespace std;
 
-menuWindow::menuWindow(QWidget *parent) :
+menuWindow::menuWindow(shared_ptr<Client> c, QWidget *parent) :
     QDialog(parent)
     , AbstractWindow(this)
+    , c{c}
+//    , friendsListMenu{c->getClient_socket()}
     , ui(new Ui::menuWindow)
 {
     ui->setupUi(this);
-
+    QSound::play(QString("/home/bappi/Documents/F209/WORK/PART_3/WORK_5/CONNECT/Quoridor/audio/USSR.wav"));
     ui->menuWidget->setCurrentIndex(actual_page);
     connect(ui->pushButton_play, SIGNAL(released()), this, SLOT(play_game()));
     connect(ui->pushButton_retour, SIGNAL(released()), this, SLOT(retour()));
@@ -25,6 +28,7 @@ menuWindow::menuWindow(QWidget *parent) :
     connect(ui->pushButton_friend_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_add, SIGNAL(released()), this, SLOT(friend_man_add()));
     connect(ui->pushButton_friend_add, SIGNAL(released()), this, SLOT(friend_man_pseudo()));
+    connect(ui->pushButton_friend_list, SIGNAL(released()), this, SLOT(friend_list()));
     connect(ui->pushButton_friend_add_retour, SIGNAL(released()), this, SLOT(retour()));
     connect(ui->pushButton_ranking, SIGNAL(released()), this, SLOT(ranking()));
     connect(ui->pushButton_rank_retour, SIGNAL(released()), this, SLOT(retour()));
@@ -65,6 +69,31 @@ bool menuWindow::check_pseudo(string pseudo){
 void menuWindow::show_screen(int to_load){
     actual_page = to_load;
     ui->menuWidget->setCurrentIndex(actual_page);
+}
+
+void menuWindow::add_friend(){
+    QString recieved = ui->friend_to_add->text();
+    int sock = c->getClient_socket();
+    FriendsListMenu friendsListMenu{sock};
+    if (friendsListMenu.addFriend(recieved.toUtf8().constData())){
+        QMessageBox::information(this, QString("Information"), QString("Ami ajoute avec succes"));
+    }
+    else {
+        QMessageBox::warning(this, QString("Information"), QString("Ajout d'ami impossible, veuillez réessayer"));
+    }
+}
+
+void menuWindow::update_friend_list(){
+    int sock = c->getClient_socket();
+    FriendsListMenu friendsListMenu{sock};
+    // friendsListMenu.updateAll();
+    vector<string> friend_name = friendsListMenu.displayFriendsQT();
+    int i = 0;
+    for (string name: friend_name){
+        char * tmp_char = &name[0];
+        ui->table_friend->setItem(i, 0, new QTableWidgetItem(QString(tmp_char)));
+        ++i;
+    }
 }
 
 void menuWindow::update_ranking(RankingData data){
@@ -109,14 +138,21 @@ void menuWindow::friend_management(){
 void menuWindow::friend_man_add(){
     qDebug("Add friend");
     show_screen(FRIENDS_ADD);
-    // QString recieved = ui->friend_to_add.text();
+
+}
+
+void menuWindow::friend_list(){
+    cout << "FRIEND LISTTTT" << endl;
+    update_friend_list();
+    show_screen(FRIEND_LIST);
 }
 
 void menuWindow::friend_man_pseudo(){
-    qDebug("Add pseudo");
-    QString testString = ui->friend_to_add->text();
-    qDebug(qUtf8Printable(testString));
-    check_pseudo(testString.toUtf8().constData());
+//    qDebug("Add pseudo");
+//    QString testString = ui->friend_to_add->text();
+//    qDebug(qUtf8Printable(testString));
+//    check_pseudo(testString.toUtf8().constData());
+    add_friend();
 }
 
 void menuWindow::ranking(){

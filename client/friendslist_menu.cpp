@@ -65,6 +65,10 @@ void FriendsListMenu::displayFriends() {
     cout << endl;
 }
 
+vector<string> FriendsListMenu::displayFriendsQT(){ // Seulement pour afficher dans le UI
+    return friendsPseudo;
+}
+
 void FriendsListMenu::displayOptions() {
     cout << "1.Ajouter un ami" << endl;
     cout << "2.Retourner au menu" << endl;

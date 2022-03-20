@@ -9,8 +9,9 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QSharedPointer<MainWindow> w = QSharedPointer<MainWindow>(new MainWindow);
-    QSharedPointer<menuWindow> m = QSharedPointer<menuWindow>(new menuWindow);
+    std::shared_ptr<Client> c = std::make_shared<Client>();
+    QSharedPointer<MainWindow> w = QSharedPointer<MainWindow>(new MainWindow(c));
+    QSharedPointer<menuWindow> m = QSharedPointer<menuWindow>(new menuWindow(c));
     QSharedPointer<generalWindow> g = QSharedPointer<generalWindow>(new generalWindow(w, m));
     g->create_windows();
 

@@ -13,7 +13,8 @@ class FriendsListMenu: public Menu {
     enum options{addFriendChoice=1, exit=2, max_input=2};
     public:
         FriendsListMenu(int sock): sock{sock} {this->updateAll();};
-
+        std::vector<std::string> displayFriendsQT();
+        bool addFriend(std::string pseudo);
         void updateAll();
         void run();
 
@@ -21,7 +22,6 @@ class FriendsListMenu: public Menu {
         void updatePseudo();
         void displayFriends();
         void displayOptions();
-        bool addFriend(std::string pseudo);
 };
 
 #endif

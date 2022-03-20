@@ -16,8 +16,8 @@ generalWindow::generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWi
 }
 
 void generalWindow::run_game(){
-    windows[WINDOW_MENU]->getSelf()->show();
-    // windows[WINDOW_CONNECT]->getSelf()->show();
+    // windows[WINDOW_MENU]->getSelf()->show();
+    windows[WINDOW_CONNECT]->getSelf()->show();
 }
 
 generalWindow::~generalWindow(){}
