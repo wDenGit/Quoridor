@@ -2,10 +2,11 @@
 #include "ui_gamewindow.h"
 
 
-gameWindow::gameWindow(QWidget *parent) :
+gameWindow::gameWindow(shared_ptr<Client> c, QWidget *parent) :
     board(std::make_shared<Board>(9)),
     boardController(this->board),
     QDialog(parent),
+    c{c},
     AbstractWindow(this),
     ui(new Ui::gameWindow),
     bv(board),

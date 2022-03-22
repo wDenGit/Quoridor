@@ -13,6 +13,7 @@
 #include "./client/board_controller.hpp"
 #include "./client/board_view.hpp"
 #include "./client/player.hpp"
+#include "./client/client.hpp"
 #include "abstractwindow.h"
 #include <QLabel>
 
@@ -33,10 +34,11 @@ class gameWindow : public QDialog, public AbstractWindow
     std::string stringMove;
     int sizeMove=0;
     BoardView bv;
+    std::shared_ptr<Client> c; //inutilisé pour linstant
 
 
 public:
-    explicit gameWindow(QWidget *parent = nullptr);
+    explicit gameWindow(std::shared_ptr<Client> c, QWidget *parent = nullptr);
     void delete_buttons();
     void make_buttons();
     void updateButtons() const ;
