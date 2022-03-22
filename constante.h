@@ -15,5 +15,6 @@ const int MATCHMAKING = 6;
 
 const int WINDOW_CONNECT = 0;
 const int WINDOW_MENU = 1;
+const int WINDOW_GAME = 2;
 
 #endif // CONSTANTE_H

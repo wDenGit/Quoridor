@@ -3,6 +3,8 @@
 
 #include "mainwindow.h"
 #include "menuwindow.hpp"
+#include "gamewindow.h"
+
 #include "observer.hpp"
 #include "abstractwindow.h"
 #include "constante.h"
@@ -24,7 +26,7 @@ private:
 
 
 public:
-    generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m);
+    generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m, QSharedPointer<gameWindow> ga);
     ~generalWindow();
     void run_game();
     void switch_window(int windowToShow);

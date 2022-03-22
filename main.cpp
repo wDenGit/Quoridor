@@ -12,10 +12,13 @@ int main(int argc, char *argv[])
     std::shared_ptr<Client> c = std::make_shared<Client>();
     QSharedPointer<MainWindow> w = QSharedPointer<MainWindow>(new MainWindow(c));
     QSharedPointer<menuWindow> m = QSharedPointer<menuWindow>(new menuWindow(c));
-    QSharedPointer<generalWindow> g = QSharedPointer<generalWindow>(new generalWindow(w, m));
-    g->create_windows();
+    QSharedPointer<gameWindow> ga = QSharedPointer<gameWindow>(new gameWindow)  ;
+    ga->make_buttons();
+    ga->updateButtons();
+    QSharedPointer<generalWindow> ge = QSharedPointer<generalWindow>(new generalWindow(w, m, ga));
+    ge->create_windows();
 
     // generalWindow window;
-    g->run_game();
+    ge->run_game();
     return a.exec();
 }

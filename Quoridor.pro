@@ -1,7 +1,6 @@
 QT       += core gui
-QT += multimedia
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
 
@@ -24,6 +23,7 @@ SOURCES += \
     client/player.cpp \
     common/common.cpp \
     common/socketlib.cpp \
+    gamewindow.cpp \
     generalwindow.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -49,6 +49,7 @@ HEADERS += \
     common/socketlib.hpp \
     abstractwindow.h \
     constante.h \
+    gamewindow.h \
     generalwindow.h \
     mainwindow.h \
     menuwindow.hpp \
@@ -58,6 +59,7 @@ HEADERS += \
     server/server.hpp
 
 FORMS += \
+    gamewindow.ui \
     mainwindow.ui \
     menuwindow.ui
 

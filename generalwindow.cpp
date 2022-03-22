@@ -10,9 +10,10 @@ void generalWindow::create_windows(){
     }
 }
 
-generalWindow::generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m){
+generalWindow::generalWindow(QSharedPointer<MainWindow> w, QSharedPointer<menuWindow> m, QSharedPointer<gameWindow> ga){
     windows.push_back(w);
     windows.push_back(m);
+    windows.push_back(ga);
 }
 
 void generalWindow::run_game(){
@@ -46,6 +47,10 @@ void generalWindow::switch_window(int windowToShow){
          break;
 
      case WINDOW_MENU:
+         this->switch_window(windowToShow);
+        break;
+
+     case WINDOW_GAME:
          this->switch_window(windowToShow);
         break;
     }

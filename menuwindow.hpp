@@ -2,7 +2,7 @@
 #define MENUWINDOW_H
 
 #include <QDialog>
-#include <QSound>
+//#include <QSound>
 #include <string.h>
 #include <ctime>
 #include <client/client.hpp>
@@ -10,7 +10,6 @@
 #include <client/friendslist_menu.hpp>
 #include <memory>
 #include "constante.h"
-#include "mainwindow.h"
 #include "observer.hpp"
 #include "abstractwindow.h"
 

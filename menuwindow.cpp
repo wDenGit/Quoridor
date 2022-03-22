@@ -19,7 +19,7 @@ menuWindow::menuWindow(shared_ptr<Client> c, QWidget *parent) :
     , ui(new Ui::menuWindow)
 {
     ui->setupUi(this);
-    QSound::play(QString("/home/bappi/Documents/F209/WORK/PART_3/WORK_5/CONNECT/Quoridor/audio/USSR.wav"));
+    //QSound::play(QString("./Quoridor/audio/USSR.wav"));
     ui->menuWidget->setCurrentIndex(actual_page);
     connect(ui->pushButton_play, SIGNAL(released()), this, SLOT(play_game()));
     connect(ui->pushButton_retour, SIGNAL(released()), this, SLOT(retour()));
@@ -121,7 +121,7 @@ void menuWindow::play_game(){
 
 void menuWindow::matchmaking(){
     qDebug("Matchmaking");
-    show_screen(MATCHMAKING);
+    this->notifyObservers(WINDOW_GAME);
 }
 
 void menuWindow::retour(){

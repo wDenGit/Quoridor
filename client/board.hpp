@@ -1,9 +1,11 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <QDebug>
 #include <vector>
 #include <memory>
 #include <array>
+#include <string>
 #include <iostream>     // DEBUG
 
 struct Point{
@@ -30,7 +32,7 @@ class Pawn: public Entity {
         int getPlayer() {return player;}
         void setPos(Point newPos) {this->pos = newPos;}
         Point getPos() {return this->pos;};
-        
+
 };
 
 class Case {
@@ -48,7 +50,7 @@ class Case {
         void setWallNeighbors(std::vector<std::shared_ptr<Case>> v) {wallCaseNeighbor = v;}
         std::vector<std::shared_ptr<Case>> getPawnCaseNeighbors() {return pawnCaseNeighbor;}
         std::vector<std::shared_ptr<Case>> getWallCaseNeighbors() {return wallCaseNeighbor;}
-        
+
         bool isEmpty() const {return entity == nullptr;}
         bool isPawnCase() const {return caseType == pawn;}
         void put(std::shared_ptr<Entity> newEntity);
@@ -64,7 +66,7 @@ class Case {
 class Board {
     std::vector<std::vector<std::shared_ptr<Case>>> board;
     int size;
-    std::array<Point,4> pawns;
+    std::array<Point,4> pawns={{-1,-1}};
 
     void initializeNeighbors();
     public:
@@ -73,7 +75,7 @@ class Board {
         const std::vector<std::vector<std::shared_ptr<Case>>> &getBoard() const {return board;}
 
         size_t getSize() const {return board.size();}
-        
+
         bool checkEmptyCase(Point pos) const;
 
         bool checkCaseType(Point pos) const;
@@ -89,12 +91,12 @@ class Board {
         void removePawn(Point p_pawn);
 
         void removeWall(Point pos1, Point pos2, Point pos3);
-        std::array<Point,4> getPawn() {return pawns;}         
-        
+        std::array<Point,4> getPawn() {return pawns;}
+
         std::shared_ptr<Case> getCase(Point pos);
 
-        
-        
-}; 
+
+
+};
 
 #endif
