@@ -1,9 +1,11 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <QDebug>
 #include <vector>
 #include <memory>
 #include <array>
+#include <string>
 #include <iostream>     // DEBUG
 
 struct Point{
@@ -64,7 +66,7 @@ class Case {
 class Board {
     std::vector<std::vector<std::shared_ptr<Case>>> board;
     int size;
-    std::array<Point,4> pawns;
+    std::array<Point,4> pawns={{-1,-1}};
 
     void initializeNeighbors();
     public:

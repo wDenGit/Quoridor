@@ -3,6 +3,7 @@
 
 #include "board.hpp"
 
+
 class ControlMove {
     std::shared_ptr<Board> board;
     public:
