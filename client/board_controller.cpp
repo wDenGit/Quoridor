@@ -122,9 +122,11 @@ vector<Point> BoardController::moveParser(string s) {
 }
 
 bool BoardController::checkWall(vector<Point> wallPoint){
-    if ((! checkWallSyntax(wallPoint)) || (! checkWallGoodPos(wallPoint))) return false;
-    // si notre murs traverse une case pion
+    if(! checkWallSyntax(wallPoint)) return false;
     if (this->board->checkCaseType(this->fillWallPoint(wallPoint))) return false;
+    wallPoint.push_back(this->fillWallPoint(wallPoint));
+    if ((! checkWallGoodPos(wallPoint))) return false;
+    // si notre murs traverse une case pion
     return true;
 }
 
@@ -166,12 +168,15 @@ Point BoardController::fillWallPoint(std::vector<Point> wallPoint){
 
 bool BoardController::checkWallGoodPos(vector<Point> wallPoint) {   // apres ajoute notre 3 eme point
     // Verification du bon placement des mures
+    qDebug()<<wallPoint.size();
     std::shared_ptr<Case> wall1Case = board->getCase(wallPoint[0]);
     std::shared_ptr<Case> wall2Case = board->getCase(wallPoint[1]);
+    std::shared_ptr<Case> wall3Case = board->getCase(wallPoint[2]);
 
     // si une des 2 case pas vide -> false
-    if ((! wall1Case->isEmpty()) || (! wall2Case->isEmpty()))   return false;
-    if ((wall1Case->isPawnCase()) || wall2Case->isPawnCase()) return false;
+    if ((! wall1Case->isEmpty()) || (! wall2Case->isEmpty()) || (! wall3Case->isEmpty()))   return false;
+    if ((wall1Case->isPawnCase()) || wall2Case->isPawnCase() || wall2Case->isPawnCase()) return false;
+
     // verifie que le murs n'est pas sur une bonne pos
     bool res1 = ((wall1Case->getPos()).x % 2 == 1) && ((wall1Case->getPos()).y % 2 == 1);
     bool res2 = ((wall2Case->getPos()).x % 2 == 1) && ((wall2Case->getPos()).y % 2 == 1);
@@ -249,6 +254,7 @@ bool BoardController::checkPath(Point pos1, Point pos2, Point pos3, std::shared_
     std::array<Point, 4> pawns = this->board->getPawn();
 
     for(size_t i=0; i < pawns.size(); i++) {
+        qDebug("true");
         if((pawns[i].x != -1) && (pawns[i].y != -1)){
 
             switch(i) {
